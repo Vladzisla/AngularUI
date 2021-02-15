@@ -1,0 +1,7 @@
+export interface Users {
+  [index: number]: {
+    id: number;
+    login: string;
+    role: string;
+  };
+}
