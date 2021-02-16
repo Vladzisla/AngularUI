@@ -22,4 +22,7 @@ export class UserService {
   createUser(user: User): any{
     return this.http.post(`http://localhost:3000/users/registration`, user);
   }
+  updateUser(id: number, body: any): any {
+    return this.http.put(`http://localhost:3000/users/${id}`, body);
+  }
 }

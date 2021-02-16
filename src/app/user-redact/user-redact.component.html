@@ -1,1 +1,49 @@
-<div>{{user | json}}</div>
+<div class="container">
+  <table *ngIf="user[0] as user">
+    <tr>
+      <td>id</td>
+      <td>{{user.id}}</td>
+    </tr>
+    <tr>
+      <td>login</td>
+      <td>{{user.login}}</td>
+    </tr>
+    <tr>
+      <td>password</td>
+      <td>{{user.password}}</td>
+    </tr>
+    <tr>
+      <td>role</td>
+      <td>{{user.role}}</td>
+    </tr>
+    <tr>
+      <td>createdAt</td>
+      <td>{{user.createdAt}}</td>
+    </tr>
+    <tr>
+      <td>updatedAT</td>
+      <td>{{user.updatedAt}}</td>
+    </tr>
+  </table>
+
+  <form [formGroup]="registrationForm" (ngSubmit)="onSubmitted()" >
+    <div class="form-group">
+      <label for="login">Login</label>
+      <input id="login" type="text" class="form-control" formControlName="login">
+    </div>
+<!--    <div class="form-group">-->
+<!--      <label for="password">Password</label>-->
+<!--      <input id="password" type="password" class="form-control" formControlName="password">-->
+<!--    </div>-->
+    <div class="form-group">
+      <label for="role">Role</label>
+      <input id="role" type="text" class="form-control" formControlName="role">
+    </div>
+<!--    <div class="form-group">-->
+<!--      <label for="filePath">filePath</label>-->
+<!--      <input id="filePath" type="text" class="form-control" formControlName="filePath">-->
+<!--    </div>-->
+    <input type="submit" >
+  </form>
+  <div *ngIf="message$ | async as message">{{message.message}}</div>
+</div>

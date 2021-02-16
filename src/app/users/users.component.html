@@ -1,6 +1,12 @@
 <div *ngIf="users$ | async as users">
-  <div *ngFor="let user of users">
-    <a [routerLink]="user.id">{{user | json}}</a>
-  </div>
+  <table>
+    <tr>
+      <td>id</td><td>login</td><td>role</td>
+    </tr>
+    <tr *ngFor="let user of users" [routerLink]="user.id">
+      <td>{{user.id}}</td><td>{{user.login}}</td><td>{{user.role}}</td>
+    </tr>
+  </table>
 </div>
+
 <button [routerLink]="'create'">Create new user</button>
