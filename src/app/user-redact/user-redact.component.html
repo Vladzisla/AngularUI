@@ -28,7 +28,7 @@
 
   <form [formGroup]="registrationForm" (ngSubmit)="onSubmitted()" >
     <div class="form-group">
-      <label for="login">Login</label>
+      <div><label for="login">Login</label></div>
       <input id="login" type="text" class="form-control" formControlName="login">
     </div>
 <!--    <div class="form-group">-->
@@ -36,14 +36,15 @@
 <!--      <input id="password" type="password" class="form-control" formControlName="password">-->
 <!--    </div>-->
     <div class="form-group">
-      <label for="role">Role</label>
+      <div><label for="role">Role</label></div>
       <input id="role" type="text" class="form-control" formControlName="role">
+      <div *ngIf="registrationForm.errors" class="alert">Role must be user or admin</div>
     </div>
 <!--    <div class="form-group">-->
 <!--      <label for="filePath">filePath</label>-->
 <!--      <input id="filePath" type="text" class="form-control" formControlName="filePath">-->
 <!--    </div>-->
-    <input type="submit" value="Send">
+    <input type="submit" value="Send" [disabled]="sendDisable">
   </form>
   <div *ngIf="message$ | async as message">{{message.message}}</div>
   <button [routerLink]="'..'">Back to users</button>
