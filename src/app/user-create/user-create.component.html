@@ -2,17 +2,19 @@
   <form [formGroup]="registrationForm" (ngSubmit)="onSubmitted()" >
     <div class="form-group">
       <label for="login">Login</label>
-      <input id="login" type="text" class="form-control" formControlName="login">
+      <input #login id="login" type="text" class="form-control" formControlName="login">
     </div>
     <div class="form-group">
       <label for="password">Password</label>
-      <input id="password" type="password" class="form-control" formControlName="password">
+      <input #pass id="password" type="password" class="form-control" formControlName="password">
     </div>
     <div class="form-group">
       <label for="repeat-password">Repeat password</label>
-      <input id="repeat-password" type="password" class="form-control" formControlName="passwordRep">
+      <input #passRep id="repeat-password" type="password" class="form-control" formControlName="passwordRep">
     </div>
-    <input type="submit" >
+    <div *ngIf="pass.value !== passRep.value && passRep.classList.contains('ng-dirty')" [ngClass]="{'alert': passRep.classList.contains('ng-dirty')}">Passwords are mismatch</div>
+    <input type="submit" [disabled]="isDisabled(login, pass, passRep)" value="Send">
   </form>
   <div *ngIf="message$ | async as message">{{message.message}}</div>
+  <button [routerLink]="'..'">Back to users</button>
 </div>

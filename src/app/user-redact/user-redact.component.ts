@@ -3,6 +3,7 @@ import {UserService} from '../user.service';
 import {ActivatedRoute} from '@angular/router';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {User} from '../interfaces/user.interface';
+import {UserFull} from '../interfaces/userFull.interface';
 
 @Component({
   selector: 'app-user-redact',
@@ -11,7 +12,7 @@ import {User} from '../interfaces/user.interface';
 })
 export class UserRedactComponent implements OnInit {
   id: number;
-  user: any;
+  user: UserFull;
   registrationForm: FormGroup;
   message$: any;
 
@@ -38,6 +39,6 @@ export class UserRedactComponent implements OnInit {
     if (this.registrationForm.get(['login']).value) { body.login = this.registrationForm.get(['login']).value; }
     if (this.registrationForm.get(['role']).value) {  body.role = this.registrationForm.get(['role']).value; }
     this.message$ = this.userService.updateUser(this.id, body);
-    this.message$.subscribe(() => this.userService.getUser(this.id).subscribe(user => this.user = user));
+    this.message$.subscribe((mess) => this.userService.getUser(this.id).subscribe(user => this.user = user));
   }
 }

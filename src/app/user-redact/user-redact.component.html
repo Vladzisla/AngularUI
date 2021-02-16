@@ -43,7 +43,8 @@
 <!--      <label for="filePath">filePath</label>-->
 <!--      <input id="filePath" type="text" class="form-control" formControlName="filePath">-->
 <!--    </div>-->
-    <input type="submit" >
+    <input type="submit" value="Send">
   </form>
   <div *ngIf="message$ | async as message">{{message.message}}</div>
+  <button [routerLink]="'..'">Back to users</button>
 </div>
